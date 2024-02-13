@@ -1,0 +1,25 @@
+.button {
+    background-color: rgb(182, 35, 0);
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    -unity-font-style: bold;
+    -unity-text-align: middle-center;
+    border-left-color: rgb(182, 35, 0);
+    border-right-color: rgb(182, 35, 0);
+    border-top-color: rgb(182, 35, 0);
+    border-bottom-color: rgb(182, 35, 0);
+    border-radius: 8px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 4px;
+    border-left-width: 0;
+    -unity-font: url('project://database/Assets/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&guid=5cab9ebfbf822ba40bfa5d7cee4ac899&type=3#NotInter-Regular');
+    min-width: 48px;
+    min-height: 48px;
+    padding: 16px 40px;
+}
+
+.unselected {
+    background-color: rgb(160, 49, 22);
+    border-bottom-width: 0;
+}

@@ -1,0 +1,35 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:Template name="ButtonTemplate" src="project://database/Assets/UI/ButtonTemplate.uxml?fileID=9197481963319205126&amp;guid=49d901be8fa6a434b8fd3885ca51e3b5&amp;type=3#ButtonTemplate" />
+    <Style src="project://database/Assets/UI/ConfiguratorMenu.uss?fileID=7433441132597879392&amp;guid=f325c3113a3d3b746b387178e488051d&amp;type=3#ConfiguratorMenu" />
+    <ui:VisualElement name="TitleScreen" style="flex-grow: 1; background-color: rgb(250, 249, 249); justify-content: space-around; align-items: center; display: none;">
+        <ui:VisualElement style="flex-grow: 1; -unity-background-image-tint-color: rgb(237, 88, 79); background-color: rgb(255, 255, 255); border-top-width: 0; border-right-width: 0; border-bottom-width: 4px; border-left-width: 0; border-left-color: rgb(221, 221, 221); border-right-color: rgb(221, 221, 221); border-top-color: rgb(221, 221, 221); border-bottom-color: rgb(221, 221, 221); width: 100%; justify-content: center; align-items: center; height: 50%;">
+            <ui:Label tabindex="-1" text="NIANTIC&#10;CONFIGURATOR" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(29, 29, 29); -unity-font-style: bold; -unity-font: url(&apos;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=2230732570650464555&amp;guid=330fbdfd92fa909469ad5c5923631c2b&amp;type=3#NotInter-Regular&apos;); -unity-text-align: upper-center; font-size: 24%;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center; width: 100%; background-color: rgb(246, 246, 246);">
+            <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="button" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="HUD" picking-mode="Ignore" style="flex-grow: 1; display: none; justify-content: space-between;">
+        <ui:GroupBox name="GroupBox" picking-mode="Ignore" style="height: auto; flex-direction: row; justify-content: flex-end; background-color: rgba(56, 56, 56, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+            <ui:Button text="+" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+    <ui:VisualElement name="ProductLibraryScreen" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); display: none; visibility: visible;">
+        <ui:GroupBox name="ProductList" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+            <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
+            <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
+            <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
+        </ui:GroupBox>
+        <ui:GroupBox name="ProductOptionsGroup" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(195, 195, 195); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px; border-top-width: 4px; border-left-color: rgb(122, 140, 164); border-right-color: rgb(122, 140, 164); border-top-color: rgb(122, 140, 164); border-bottom-color: rgb(122, 140, 164); display: none;">
+            <ui:Button text="S" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectProductVariant1Button" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:Button text="M" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectProductVariant2Button" class="button unselected" />
+            <ui:Button text="L" parse-escape-sequences="true" display-tooltip-when-elided="true" name="SelectProductVariant3Button" class="button unselected" />
+        </ui:GroupBox>
+        <ui:VisualElement style="flex-grow: 1; background-color: rgb(250, 249, 249); justify-content: center; align-items: center; visibility: hidden;">
+            <ui:Label tabindex="-1" text="[3D model goes here]" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+        </ui:VisualElement>
+        <ui:GroupBox name="GroupBox" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+            <ui:Button text="Place Object" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductToSceneButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+        </ui:GroupBox>
+    </ui:VisualElement>
+</ui:UXML>
