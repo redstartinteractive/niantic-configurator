@@ -9,13 +9,14 @@
             <ui:Button text="Start" parse-escape-sequences="true" display-tooltip-when-elided="true" name="StartButton" class="button" style="transition-property: all; transition-duration: 0s; transition-timing-function: ease; transition-delay: 0s;" />
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="HUD" picking-mode="Ignore" style="flex-grow: 1; display: none; justify-content: space-between;">
-        <ui:GroupBox name="GroupBox" picking-mode="Ignore" style="height: auto; flex-direction: row; justify-content: flex-end; background-color: rgba(56, 56, 56, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+    <ui:VisualElement name="HUD" picking-mode="Ignore" style="flex-grow: 1; justify-content: space-between; display: none;">
+        <ui:GroupBox name="GroupBox" picking-mode="Ignore" style="height: auto; flex-direction: row; justify-content: space-between; background-color: rgba(56, 56, 56, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 48px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+            <ui:Button text="%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ToggleMeshButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
             <ui:Button text="+" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
         </ui:GroupBox>
     </ui:VisualElement>
-    <ui:VisualElement name="ProductLibraryScreen" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); display: none; visibility: visible;">
-        <ui:GroupBox name="ProductList" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
+    <ui:VisualElement name="ProductLibraryScreen" style="flex-grow: 1; background-color: rgba(255, 255, 255, 0); display: none;">
+        <ui:GroupBox name="ProductList" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 48px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
             <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
             <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
             <ui:Instance template="ButtonTemplate" name="ButtonTemplate" />
@@ -28,8 +29,10 @@
         <ui:VisualElement style="flex-grow: 1; background-color: rgb(250, 249, 249); justify-content: center; align-items: center; visibility: hidden;">
             <ui:Label tabindex="-1" text="[3D model goes here]" parse-escape-sequences="true" display-tooltip-when-elided="true" />
         </ui:VisualElement>
-        <ui:GroupBox name="GroupBox" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
-            <ui:Button text="Place Object" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductToSceneButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+        <ui:GroupBox name="ActionButtonContainer" style="height: auto; flex-direction: row; justify-content: space-around; background-color: rgb(255, 255, 255); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 16px; padding-right: 16px; padding-bottom: 40px; padding-left: 16px;">
+            <ui:Button text="Cancel" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CancelLockButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:Button text="Lock" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LockObjectInPlace" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:Button text="Drop" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductToSceneButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
         </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

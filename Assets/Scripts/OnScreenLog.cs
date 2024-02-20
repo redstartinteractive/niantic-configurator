@@ -7,12 +7,13 @@ public class OnScreenLog : MonoBehaviour
 
     private void Awake()
     {
+        logText.SetText(string.Empty);
         Application.logMessageReceived += OnLogMessage;
     }
 
-    private void OnLogMessage(string condition, string stacktrace, LogType type)
+    private void OnLogMessage(string message, string stacktrace, LogType type)
     {
-        logText.text += $"[{type}] {condition}\n\n";
+        logText.text += ($"[{type}] {message}\n\n");
     }
 
     private void OnDestroy()

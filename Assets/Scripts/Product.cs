@@ -4,6 +4,12 @@ public class Product : MonoBehaviour
 {
     [SerializeField] private ProductDefinition productDefinition;
 
+    public bool LockedInPlace
+    {
+        get => Rigidbody.isKinematic;
+        set => Rigidbody.isKinematic = value;
+    }
+    
     public ProductDefinition Definition => productDefinition;
     public Rigidbody Rigidbody { get; private set; }
 

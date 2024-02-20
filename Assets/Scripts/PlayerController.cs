@@ -12,10 +12,23 @@ public class PlayerController : MonoBehaviour
 
     public event Action<Product> OnProductSelected;
 
+    public Product CurrentHoldingProduct { get; set; }
+    public Transform HoldObjectPoint => holdObjectPoint;
+    public Quaternion HoldObjectRotation
+    {
+        get
+        {
+            Quaternion forwardRotation = Quaternion.LookRotation(holdObjectPoint.forward, Vector3.up);
+            Quaternion uprightRotation = Quaternion.FromToRotation(forwardRotation * Vector3.up, Vector3.up);
+            return uprightRotation * forwardRotation;
+        }
+    }
+
     private Camera cameraReference;
     private int rayCastMask;
-    private Product holdingObject;
+    private Product currentPointingProduct;
     private readonly List<RaycastResult> raycastResults = new();
+    private readonly Vector3 screenMiddlePoint = new (0.5f, 0.5f, 0);
 
     private void Start()
     {
@@ -28,25 +41,27 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!holdingObject) return;
+        TryMoveHeldObject();
+    }
 
-        MoveToPoint(holdingObject.Rigidbody, holdObjectPoint.position);
+    private bool TryMoveHeldObject() {
+        if(!CurrentHoldingProduct || CurrentHoldingProduct.LockedInPlace) return false;
 
-        Quaternion forwardRotation = Quaternion.LookRotation(holdObjectPoint.forward, Vector3.up);
-        Quaternion uprightRotation = Quaternion.FromToRotation(forwardRotation * Vector3.up, Vector3.up);
-        Quaternion targetRotation = uprightRotation * forwardRotation;
-        RotateToTarget(holdingObject.Rigidbody, targetRotation);
+        MoveToPoint(CurrentHoldingProduct.Rigidbody, holdObjectPoint.position);
+        RotateToTarget(CurrentHoldingProduct.Rigidbody, HoldObjectRotation);
+        return true;
     }
 
     private void OnTapped(InputAction.CallbackContext obj)
     {
-        if (holdingObject) return;
         Vector2 touchPosition = positionAction.ReadValue<Vector2>();
-
+        
         if (IsTappingOnUIElement(touchPosition)) return;
 
-        if (!TryPickup(touchPosition, out Product selectedProduct)) return;
-        SetHoldingProduct(selectedProduct);
+        bool didPickup = TryPickup(touchPosition, out Product selectedProduct);
+        if (selectedProduct == CurrentHoldingProduct || !didPickup) return; 
+        
+        CurrentHoldingProduct = selectedProduct;
         OnProductSelected?.Invoke(selectedProduct);
     }
 
@@ -57,23 +72,6 @@ public class PlayerController : MonoBehaviour
         // This can hit UI with "picking mode" set to "position"
         EventSystem.current.RaycastAll(pointer, raycastResults);
         return raycastResults.Count > 0;
-    }
-
-    public Product GetHoldingProduct()
-    {
-        return holdingObject;
-    }
-
-    public void SetHoldingProduct(Product product)
-    {
-        holdingObject = product;
-    }
-
-    public void DropHoldingProduct()
-    {
-        if (!holdingObject) return;
-        holdingObject.Rigidbody.velocity = Vector3.zero;
-        holdingObject = null;
     }
 
     private bool TryPickup(Vector3 screenTouchPosition, out Product pickedUpObj)
