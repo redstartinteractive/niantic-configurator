@@ -38,6 +38,11 @@ public class BasicLightEstimation : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// The estimated direction of the main light of the physical environment, if available.
+    /// </summary>
+    public Vector3? mainLightDirection { get; private set; }
 
     /// <summary>
     /// The estimated brightness of the physical environment, if available.
@@ -53,6 +58,11 @@ public class BasicLightEstimation : MonoBehaviour
     /// The estimated color correction value of the physical environment, if available.
     /// </summary>
     public Color? colorCorrection { get; private set; }
+    
+    /// <summary>
+    /// The estimated color of the main light of the physical environment, if available.
+    /// </summary>
+    public Color? mainLightColor { get; private set; }
 
     private void Awake()
     {
@@ -77,6 +87,12 @@ public class BasicLightEstimation : MonoBehaviour
 
     private void FrameChanged(ARCameraFrameEventArgs args)
     {
+        if (args.lightEstimation.mainLightDirection.HasValue)
+        {
+            mainLightDirection = args.lightEstimation.mainLightDirection;
+            m_Light.transform.rotation = Quaternion.LookRotation(mainLightDirection.Value);
+        }
+
         if(args.lightEstimation.averageBrightness.HasValue)
         {
             brightness = args.lightEstimation.averageBrightness.Value;
@@ -102,6 +118,16 @@ public class BasicLightEstimation : MonoBehaviour
         } else
         {
             colorCorrection = null;
+        }
+        
+        if (args.lightEstimation.mainLightColor.HasValue)
+        {
+            mainLightColor = args.lightEstimation.mainLightColor;
+            m_Light.color = mainLightColor.Value;
+        }
+        else
+        {
+            mainLightColor = null;
         }
     }
 
