@@ -11,7 +11,7 @@
     </ui:VisualElement>
     <ui:VisualElement name="HUD" picking-mode="Ignore" style="flex-grow: 1; justify-content: space-between; display: none;">
         <ui:GroupBox name="GroupBox" picking-mode="Ignore" style="height: auto; flex-direction: row; justify-content: space-between; background-color: rgba(56, 56, 56, 0); margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 48px; padding-right: 16px; padding-bottom: 16px; padding-left: 16px;">
-            <ui:Button text="%" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ToggleMeshButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
+            <ui:Button text="Toggle Mesh" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ToggleMeshButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
             <ui:Button text="+" parse-escape-sequences="true" display-tooltip-when-elided="true" name="AddProductButton" class="button" style="-unity-background-image-tint-color: rgb(255, 255, 255);" />
         </ui:GroupBox>
     </ui:VisualElement>
